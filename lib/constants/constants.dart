@@ -1,0 +1,16 @@
+import 'package:flutter/material.dart';
+
+Color kAppBrown = const Color(0xFFB7A26A);
+
+final Map<int, Color> brownSwatch = {
+  50: Colors.brown.shade50,
+  100: Colors.brown.shade100,
+  200: Colors.brown.shade200,
+  300: Colors.brown.shade300,
+  400: Colors.brown.shade400,
+  500: Colors.brown.shade500,
+  600: Colors.brown.shade600,
+  700: Colors.brown.shade700,
+  800: Colors.brown.shade800,
+  900: Colors.brown.shade900,
+};
