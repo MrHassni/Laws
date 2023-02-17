@@ -1,10 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:laws/providers/auth_provider.dart';
 import 'package:laws/screens/start_screen/start_screen.dart';
+import 'package:provider/provider.dart';
 
 import 'constants/constants.dart';
 
+
 void main() {
-  runApp(const MyApp());
+  runApp(
+      MultiProvider(
+        providers: [
+          ChangeNotifierProvider(create: (_) => AuthProvider()),
+        ],
+        child: const MyApp(),
+      ),);
 }
 
 class MyApp extends StatelessWidget {
@@ -14,7 +23,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'LAWS',
+      title: 'IMMIG-ASSIST',
       theme: ThemeData(
         primarySwatch:  MaterialColor(0xFFB7A26A, brownSwatch),
       ),

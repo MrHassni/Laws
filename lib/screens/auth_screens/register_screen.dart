@@ -5,7 +5,8 @@ import 'package:laws/screens/widgets/custom_text_field.dart';
 import '../../constants/constants.dart';
 
 class RegisterScreen extends StatefulWidget {
-  const RegisterScreen({Key? key}) : super(key: key);
+  final bool isLawyer;
+  const RegisterScreen({Key? key, required this.isLawyer}) : super(key: key);
 
   @override
   State<RegisterScreen> createState() => _RegisterScreenState();
@@ -31,8 +32,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
               ),
               Container(
                 margin: const EdgeInsets.symmetric(vertical: 35),
-                child: Image.asset('images/law.png',
-                  color: kAppBrown,
+                child: Image.asset('images/black_logo.png',
+                  // color: kAppBrown,
                   width: MediaQuery.of(context).size.width * 0.4,
                 ),
               ),
@@ -155,7 +156,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 width: MediaQuery.of(context).size.width * 0.85,
                 child: InkWell(
                   onTap: (){
-                    Navigator.push(context, MaterialPageRoute(builder: (context) => const LogInScreen()));
+                    Navigator.push(context, MaterialPageRoute(builder: (context) =>  LogInScreen(isLawyer: widget.isLawyer,)));
                   },
                   child: RichText(
                     textAlign: TextAlign.center,

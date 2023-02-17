@@ -1,17 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:laws/providers/auth_provider.dart';
 import 'package:laws/screens/auth_screens/register_screen.dart';
 import 'package:laws/screens/widgets/custom_text_field.dart';
+import 'package:provider/provider.dart';
 
 import '../../constants/constants.dart';
 
 class LogInScreen extends StatefulWidget {
-  const LogInScreen({Key? key}) : super(key: key);
+  final bool isLawyer;
+  const LogInScreen({Key? key, required this.isLawyer}) : super(key: key);
 
   @override
   State<LogInScreen> createState() => _LogInScreenState();
 }
 
 class _LogInScreenState extends State<LogInScreen> {
+  TextEditingController emailController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
 
   bool rememberMe = false;
 
@@ -31,8 +36,8 @@ class _LogInScreenState extends State<LogInScreen> {
               ),
               Container(
                 margin: const EdgeInsets.symmetric(vertical: 35),
-                child: Image.asset('images/law.png',
-                  color: kAppBrown,
+                child: Image.asset('images/black_logo.png',
+                  // color: kAppBrown,
                   width: MediaQuery.of(context).size.width * 0.4,
                 ),
               ),
@@ -47,11 +52,14 @@ class _LogInScreenState extends State<LogInScreen> {
               const SizedBox(
                 height: 25,
               ),
-              const CustomTextField(hint: 'Email',),
+               CustomTextField(hint: 'Email',
+              textEditingController: emailController,
+              ),
               const SizedBox(
                 height: 15,
               ),
-              const CustomTextField(hint: 'Password',),
+               CustomTextField(hint: 'Password',
+              textEditingController: passwordController,),
               const SizedBox(
                 height: 10,
               ),
@@ -80,19 +88,37 @@ class _LogInScreenState extends State<LogInScreen> {
               ),
               SizedBox(
                 width: MediaQuery.of(context).size.width * 0.85,
-                child: Card(
-                  margin: EdgeInsets.zero,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  color: kAppBrown,
-                  child: Container(padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 15),
-                      child: const Center(
-                        child: Text('SignIn', style: TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.bold
+                child: InkWell(
+                  borderRadius: BorderRadius.circular(10),
+                  onTap: (){
+
+                    if(widget.isLawyer){
+                    if(passwordController.text.trim().isNotEmpty && emailController.text.trim().isNotEmpty ) {
+                      Provider.of<AuthProvider>(context, listen: false).login(password: passwordController.text, email: emailController.text, isLawyer: widget.isLawyer);
+                    }else{
+                      errorSnackBar(context: context, message: 'Fill all the fields properly.');
+                    }}else{
+    if(passwordController.text.trim().isNotEmpty && emailController.text.trim().isNotEmpty ) {
+    Provider.of<AuthProvider>(context, listen: false).login(password: passwordController.text, email: emailController.text, isLawyer: widget.isLawyer);
+    }else{
+    errorSnackBar(context: context, message: 'Fill all the fields properly.');
+    }
+                    }
+                  },
+                  child: Card(
+                    margin: EdgeInsets.zero,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    color: kAppBrown,
+                    child: Container(padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 15),
+                        child: const Center(
+                          child: Text('SignIn', style: TextStyle(
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold
+                          )),
                         )),
-                      )),
+                  ),
                 ),
               ),
               const SizedBox(
@@ -157,7 +183,7 @@ class _LogInScreenState extends State<LogInScreen> {
                 width: MediaQuery.of(context).size.width * 0.85,
                 child: InkWell(
                   onTap: (){
-                    Navigator.push(context, MaterialPageRoute(builder: (context) => const RegisterScreen()));
+                    Navigator.push(context, MaterialPageRoute(builder: (context) =>  RegisterScreen(isLawyer: widget.isLawyer,)));
                   },
                   child: RichText(
                     textAlign: TextAlign.center,

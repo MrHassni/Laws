@@ -14,3 +14,23 @@ final Map<int, Color> brownSwatch = {
   800: Colors.brown.shade800,
   900: Colors.brown.shade900,
 };
+
+String apiURL = 'https://test.immig-assist.co.uk/api/';
+
+errorSnackBar({required BuildContext context, required String message}){
+  ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+          dismissDirection: DismissDirection.up,
+        margin:  EdgeInsets.only(bottom: MediaQuery.of(context).size.height - 100,
+            right: 20,
+            left: 20),
+        behavior: SnackBarBehavior.floating,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(10),
+        ),
+        backgroundColor: Colors.red,
+        content: Text(message,
+        textAlign: TextAlign.center,
+        style: const TextStyle(fontWeight: FontWeight.w500),),)
+  );
+}

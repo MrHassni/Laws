@@ -3,13 +3,15 @@ import 'package:flutter/material.dart';
 
 class CustomTextField extends StatelessWidget {
   final String hint;
-  const CustomTextField({Key? key, required this.hint}) : super(key: key);
+  final TextEditingController? textEditingController;
+  const CustomTextField({Key? key, required this.hint, this.textEditingController}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
       width: MediaQuery.of(context).size.width * 0.85,
       child: TextField(
+        controller: textEditingController,
             decoration: InputDecoration(
               filled: true,
               hintText: hint,

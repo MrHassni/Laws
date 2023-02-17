@@ -24,7 +24,7 @@ class _StartScreenState extends State<StartScreen> {
             const SizedBox(height: 35,),
             Container(
               margin: const EdgeInsets.symmetric(vertical: 35),
-              child: Image.asset('images/law.png',
+              child: Image.asset('images/white_logo.png',
                 width: MediaQuery.of(context).size.width * 0.4,
                 color: Colors.white,
               ),
@@ -68,7 +68,7 @@ class _StartScreenState extends State<StartScreen> {
                         InkWell(
                           borderRadius: BorderRadius.circular(10),
                           onTap:(){
-                            Navigator.push(context, MaterialPageRoute(builder: (context) => const MainAuthScreen()));
+                            Navigator.push(context, MaterialPageRoute(builder: (context) =>  const MainAuthScreen(isLawyer: false,)));
                           },
                           child: Container(
                             padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 15),
@@ -83,7 +83,7 @@ class _StartScreenState extends State<StartScreen> {
                         InkWell(
                           borderRadius: BorderRadius.circular(10),
                           onTap:(){
-                            Navigator.push(context, MaterialPageRoute(builder: (context) => const MainAuthScreen()));
+                            Navigator.push(context, MaterialPageRoute(builder: (context) =>  const MainAuthScreen(isLawyer: true              ,)));
                           },
                           child: Container(
                             padding: const EdgeInsets.all(14),

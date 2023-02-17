@@ -5,7 +5,8 @@ import 'package:laws/screens/auth_screens/register_screen.dart';
 import '../../constants/constants.dart';
 
 class MainAuthScreen extends StatelessWidget {
-  const MainAuthScreen({Key? key}) : super(key: key);
+  final bool isLawyer;
+  const MainAuthScreen({Key? key, required this.isLawyer}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -18,8 +19,8 @@ class MainAuthScreen extends StatelessWidget {
           children: [
             Container(
               margin: const EdgeInsets.symmetric(vertical: 35),
-              child: Image.asset('images/law.png',
-                color: kAppBrown,
+              child: Image.asset('images/black_logo.png',
+
                 width: MediaQuery.of(context).size.width * 0.4,
               ),
             ),
@@ -30,7 +31,7 @@ class MainAuthScreen extends StatelessWidget {
               width: MediaQuery.of(context).size.width * 0.85,
               child: InkWell(
                 onTap: (){
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => const LogInScreen()));
+                  Navigator.push(context, MaterialPageRoute(builder: (context) =>  LogInScreen(isLawyer: isLawyer,)));
                 },
                 child: Card(
                   margin: EdgeInsets.zero,
@@ -55,7 +56,7 @@ class MainAuthScreen extends StatelessWidget {
               width: MediaQuery.of(context).size.width * 0.85,
               child: InkWell(
                 onTap: (){
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => const RegisterScreen()));
+                  Navigator.push(context, MaterialPageRoute(builder: (context) =>  RegisterScreen(isLawyer: isLawyer,)));
                 },
                 child: Card(
                   margin: EdgeInsets.zero,
