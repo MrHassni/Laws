@@ -4,7 +4,10 @@ import 'package:flutter/material.dart';
 class CustomTextField extends StatelessWidget {
   final String hint;
   final TextEditingController? textEditingController;
-  const CustomTextField({Key? key, required this.hint, this.textEditingController}) : super(key: key);
+  final TextInputType keyboardType;
+  final bool obscureText;
+  final Widget sIcon;
+  const CustomTextField({Key? key, required this.hint, this.textEditingController, this.keyboardType = TextInputType.text, this.obscureText = false, this.sIcon = const SizedBox()}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -12,9 +15,12 @@ class CustomTextField extends StatelessWidget {
       width: MediaQuery.of(context).size.width * 0.85,
       child: TextField(
         controller: textEditingController,
+            keyboardType: keyboardType,
+            obscureText: obscureText,
             decoration: InputDecoration(
               filled: true,
               hintText: hint,
+              suffix: sIcon,
               fillColor: Colors.grey.shade500,
               enabledBorder: OutlineInputBorder(
                 borderSide:
