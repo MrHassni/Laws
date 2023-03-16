@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:laws/providers/auth_provider.dart';
+import 'package:laws/providers/lawyer_provider.dart';
+import 'package:laws/screens/map_screens/map_screens.dart';
 import 'package:laws/screens/start_screen/start_screen.dart';
 import 'package:provider/provider.dart';
 
@@ -11,6 +13,7 @@ void main() {
       MultiProvider(
         providers: [
           ChangeNotifierProvider(create: (_) => AuthProvider()),
+          ChangeNotifierProvider(create: (_) => LawyerProvider()),
         ],
         child: const MyApp(),
       ),);
@@ -27,7 +30,8 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch:  MaterialColor(0xFFB7A26A, brownSwatch),
       ),
-      home: const StartScreen()
+      home: const MapScreen(),
+      // home: const StartScreen()
     );
   }
 }

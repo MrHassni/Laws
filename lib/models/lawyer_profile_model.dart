@@ -1,4 +1,4 @@
-class LawyerModel {
+class LawyerProfileModel {
   final int id;
   final int typeId;
   final int ethnicityId;
@@ -36,7 +36,7 @@ class LawyerModel {
   final String lawyerType;
   final String ethnicityType;
 
-  LawyerModel({
+  LawyerProfileModel({
     required this.id,
     required this.typeId,
     required this.ethnicityId,
@@ -75,8 +75,8 @@ class LawyerModel {
     required this.ethnicityType,
   });
 
-  factory LawyerModel.fromJson(Map<String, dynamic> json) {
-    return LawyerModel(
+  factory LawyerProfileModel.fromJson(Map<String, dynamic> json) {
+    return LawyerProfileModel(
       id: json['id'],
       typeId: json['type_id'],
       ethnicityId: json['ethnicity_id'],

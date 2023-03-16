@@ -4,11 +4,10 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:laws/constants/constants.dart';
-import 'package:laws/map_screens/map_screens.dart';
-import 'package:permission_handler/permission_handler.dart';
 
 import '../models/client_profile_model.dart';
 import '../models/lawyer_profile_model.dart';
+import '../screens/map_screens/map_screens.dart';
 
 class AuthProvider with ChangeNotifier{
 
@@ -23,6 +22,7 @@ class AuthProvider with ChangeNotifier{
         getLawyerProfile(id: allData['content']['id'].toString());
       }else{
         log(allData['content']['id'].toString());
+
         getClientProfile(id: allData['content']['id'].toString(), context: context);
       }
 
@@ -38,7 +38,7 @@ class AuthProvider with ChangeNotifier{
       if (response.statusCode == 200) {
         var allData = jsonDecode(response.body);
         log(allData.toString());
-        LawyerModel.fromJson(allData['content']);
+        LawyerProfileModel.fromJson(allData['content']);
       } else {
         throw Exception('Failed to load data');
       }
