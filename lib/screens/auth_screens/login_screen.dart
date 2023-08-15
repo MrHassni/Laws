@@ -7,9 +7,9 @@ import 'package:provider/provider.dart';
 import '../../constants/constants.dart';
 
 class LogInScreen extends StatefulWidget {
-  final bool isLawyer;
 
-  const LogInScreen({Key? key, required this.isLawyer}) : super(key: key);
+
+  const LogInScreen({Key? key}) : super(key: key);
 
   @override
   State<LogInScreen> createState() => _LogInScreenState();
@@ -49,7 +49,7 @@ class _LogInScreenState extends State<LogInScreen> {
               Container(
                 alignment: Alignment.centerLeft,
                 width: MediaQuery.of(context).size.width * 0.85,
-                child: Text('Welcome\nback!',
+                child: Text('Welcome\nBack!',
                     textAlign: TextAlign.left,
                     style: TextStyle(
                         fontWeight: FontWeight.bold,
@@ -62,6 +62,7 @@ class _LogInScreenState extends State<LogInScreen> {
               CustomTextField(
                 hint: 'Email',
                 textEditingController: emailController,
+                keyboardType: TextInputType.emailAddress,
               ),
               const SizedBox(
                 height: 15,
@@ -118,31 +119,18 @@ class _LogInScreenState extends State<LogInScreen> {
                 child: InkWell(
                   borderRadius: BorderRadius.circular(10),
                   onTap: () {
-                    if (widget.isLawyer) {
                       if (passwordController.text.trim().isNotEmpty &&
                           emailController.text.trim().isNotEmpty) {
                         Provider.of<AuthProvider>(context, listen: false).login(
                             password: passwordController.text,
                             email: emailController.text,
-                            isLawyer: widget.isLawyer, context: context);
+                            context: context,
+                            remember: rememberMe);
                       } else {
                         errorSnackBar(
                             context: context,
                             message: 'Fill all the fields properly.');
                       }
-                    } else {
-                      if (passwordController.text.trim().isNotEmpty &&
-                          emailController.text.trim().isNotEmpty) {
-                        Provider.of<AuthProvider>(context, listen: false).login(
-                            password: passwordController.text,
-                            email: emailController.text,
-                            isLawyer: widget.isLawyer, context: context);
-                      } else {
-                        errorSnackBar(
-                            context: context,
-                            message: 'Fill all the fields properly.');
-                      }
-                    }
                   },
                   child: Card(
                     margin: EdgeInsets.zero,
@@ -154,7 +142,7 @@ class _LogInScreenState extends State<LogInScreen> {
                         padding: const EdgeInsets.symmetric(
                             horizontal: 25, vertical: 15),
                         child: const Center(
-                          child: Text('SignIn',
+                          child: Text('Sign In',
                               style: TextStyle(
                                   fontSize: 18, fontWeight: FontWeight.bold)),
                         )),
@@ -164,78 +152,87 @@ class _LogInScreenState extends State<LogInScreen> {
               const SizedBox(
                 height: 25,
               ),
-              SizedBox(
-                width: MediaQuery.of(context).size.width * 0.85,
-                child: Row(children: <Widget>[
-                  Expanded(
-                      child: Divider(
-                    thickness: 1.5,
-                    color: Colors.grey.shade500,
-                  )),
-                  const Text(
-                    "  SignIn With  ",
-                    style: TextStyle(fontWeight: FontWeight.w500),
-                  ),
-                  Expanded(
-                      child: Divider(
-                    thickness: 1.5,
-                    color: Colors.grey.shade500,
-                  )),
-                ]),
-              ),
-              const SizedBox(
-                height: 25,
-              ),
-              SizedBox(
-                width: MediaQuery.of(context).size.width * 0.85,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Container(
-                      padding: const EdgeInsets.all(5),
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10),
-                          border: Border.all(
-                              color: Colors.grey.shade500, width: 3)),
-                      child: Image.network(
-                        'https://cdn-icons-png.flaticon.com/512/59/59439.png',
-                        height: 35,
-                        width: 35,
-                        color: Colors.grey.shade500,
-                      ),
-                    ),
-                    Container(
-                      padding: const EdgeInsets.all(5),
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10),
-                          border: Border.all(
-                              color: Colors.grey.shade500, width: 3)),
-                      child: Image.network(
-                        'https://icons.veryicon.com/png/o/application/outline-1/google-75.png',
-                        height: 35,
-                        width: 35,
-                        color: Colors.grey.shade500,
-                      ),
-                    ),
-                    Container(
-                      padding: const EdgeInsets.all(5),
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10),
-                          border: Border.all(
-                              color: Colors.grey.shade500, width: 3)),
-                      child: Image.network(
-                        'https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Apple_logo_black.svg/1667px-Apple_logo_black.svg.png',
-                        height: 35,
-                        width: 35,
-                        color: Colors.grey.shade500,
-                      ),
-                    )
-                  ],
-                ),
-              ),
-              const SizedBox(
-                height: 50,
-              ),
+              // SizedBox(
+              //   width: MediaQuery.of(context).size.width * 0.85,
+              //   child: Row(children: <Widget>[
+              //     Expanded(
+              //         child: Divider(
+              //       thickness: 1.5,
+              //       color: Colors.grey.shade500,
+              //     )),
+              //     const Text(
+              //       "  Sign In With  ",
+              //       style: TextStyle(fontWeight: FontWeight.w500),
+              //     ),
+              //     Expanded(
+              //         child: Divider(
+              //       thickness: 1.5,
+              //       color: Colors.grey.shade500,
+              //     )),
+              //   ]),
+              // ),
+              // const SizedBox(
+              //   height: 25,
+              // ),
+              // SizedBox(
+              //   width: MediaQuery.of(context).size.width * 0.85,
+              //   child: Row(
+              //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              //     children: [
+              //       Container(
+              //         padding: const EdgeInsets.all(5),
+              //         decoration: BoxDecoration(
+              //             borderRadius: BorderRadius.circular(10),
+              //             border: Border.all(
+              //                 color: Colors.grey.shade500, width: 3)),
+              //         child: Image.network(
+              //           'https://cdn-icons-png.flaticon.com/512/59/59439.png',
+              //           errorBuilder: (BuildContext context, Object exception, StackTrace? stackTrace) {
+              //             return const CircularProgressIndicator();
+              //           },
+              //           height: 35,
+              //           width: 35,
+              //           color: Colors.grey.shade500,
+              //         ),
+              //       ),
+              //       Container(
+              //         padding: const EdgeInsets.all(5),
+              //         decoration: BoxDecoration(
+              //             borderRadius: BorderRadius.circular(10),
+              //             border: Border.all(
+              //                 color: Colors.grey.shade500, width: 3)),
+              //         child: Image.network(
+              //           'https://icons.veryicon.com/png/o/application/outline-1/google-75.png',
+              //           errorBuilder: (BuildContext context, Object exception, StackTrace? stackTrace) {
+              //             return const CircularProgressIndicator();
+              //           },
+              //           height: 35,
+              //           width: 35,
+              //           color: Colors.grey.shade500,
+              //         ),
+              //       ),
+              //       Container(
+              //         padding: const EdgeInsets.all(5),
+              //         decoration: BoxDecoration(
+              //             borderRadius: BorderRadius.circular(10),
+              //             border: Border.all(
+              //                 color: Colors.grey.shade500, width: 3)),
+              //         child: Image.network(
+              //           'https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Apple_logo_black.svg/1667px-Apple_logo_black.svg.png',
+              //           errorBuilder: (BuildContext context, Object exception, StackTrace? stackTrace) {
+              //             return const CircularProgressIndicator();
+              //           },
+              //           height: 35,
+              //           width: 35,
+              //           color: Colors.grey.shade500,
+              //         ),
+              //       )
+              //     ],
+              //   ),
+              // ),
+              // const SizedBox(
+              //   height: 50,
+              // ),
               SizedBox(
                 width: MediaQuery.of(context).size.width * 0.85,
                 child: InkWell(
@@ -243,8 +240,7 @@ class _LogInScreenState extends State<LogInScreen> {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => RegisterScreen(
-                                  isLawyer: widget.isLawyer,
+                            builder: (context) => const RegisterScreen(
                                 )));
                   },
                   child: RichText(

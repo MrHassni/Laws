@@ -6,6 +6,8 @@ class ClientModel {
   final String phoneNo;
   final String password;
   final String address;
+  final String? image;
+  final String path;
   final DateTime createdAt;
   final DateTime updatedAt;
 
@@ -19,6 +21,8 @@ class ClientModel {
     required this.address,
     required this.createdAt,
     required this.updatedAt,
+    required this.image,
+    required this.path
   });
 
   factory ClientModel.fromJson(Map<String, dynamic> json) {
@@ -30,6 +34,8 @@ class ClientModel {
       phoneNo: json['phone_no'],
       password: json['password'],
       address: json['address'],
+      image: json['image'],
+      path: json['path'],
       createdAt: DateTime.parse(json['created_at']),
       updatedAt: DateTime.parse(json['updated_at']),
     );

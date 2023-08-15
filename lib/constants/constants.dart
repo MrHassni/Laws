@@ -34,3 +34,26 @@ errorSnackBar({required BuildContext context, required String message}){
         style: const TextStyle(fontWeight: FontWeight.w500),),)
   );
 }
+
+nonErrorSnackBar({required BuildContext context, required String message}){
+  ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        dismissDirection: DismissDirection.up,
+        margin:  EdgeInsets.only(bottom: MediaQuery.of(context).size.height - 100,
+            right: 20,
+            left: 20),
+        behavior: SnackBarBehavior.floating,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(10),
+        ),
+        backgroundColor: kAppBrown,
+        content: Text(message,
+          textAlign: TextAlign.center,
+          style: const TextStyle(fontWeight: FontWeight.w500),),)
+  );
+}
+
+extension StringCasingExtension on String {
+  String toCapitalized() => length > 0 ?'${this[0].toUpperCase()}${substring(1).toLowerCase()}':'';
+  String toTitleCase() => replaceAll(RegExp(' +'), ' ').split(' ').map((str) => str.toCapitalized()).join(' ');
+}
