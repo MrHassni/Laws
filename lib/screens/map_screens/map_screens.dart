@@ -126,14 +126,19 @@ class MapScreenState extends State<MapScreen> {
     super.initState();
   }
 
-  Future<Map<Permission, PermissionStatus>> permissionServices() async {
-    Map<Permission, PermissionStatus> statuses = await [
-      Permission.location,
+  Future <PermissionStatus> permissionServices() async {
 
-      //add more permission to request here.
-    ].request();
+    PermissionStatus? statuses;
 
-    if (statuses[Permission.location]!.isPermanentlyDenied) {
+    if(await Permission.location.isGranted || await Permission.location.isLimited)
+    {
+      statuses =  await Permission.location.status;
+    }else{
+       statuses =  await Permission.location.request();
+    }
+
+
+    if (await Permission.location.isPermanentlyDenied) {
       await openAppSettings().then(
         (value) async {
           if (value) {
@@ -146,7 +151,7 @@ class MapScreenState extends State<MapScreen> {
         },
       );
     } else {
-      if (statuses[Permission.location]!.isDenied) {
+      if (await Permission.location.isDenied) {
         permissionServices();
       }
     }
@@ -484,6 +489,7 @@ class MapScreenState extends State<MapScreen> {
                                             if (theIndexType != index) {
                                               setState(() {
                                                 theIndexType = index;
+                                                searched = true;
                                                 typeId = provider
                                                     .lawyersTypes[index]['id'];
                                               });
@@ -551,6 +557,7 @@ class MapScreenState extends State<MapScreen> {
                                             if (theIndexEthnicity != index) {
                                               setState(() {
                                                 theIndexEthnicity = index;
+                                                searched = true;
                                                 ethnicityId =
                                                     provider.lawyersEthnicities[
                                                         index]['id'];
@@ -620,6 +627,7 @@ class MapScreenState extends State<MapScreen> {
                                             if (theIndexField != index) {
                                               setState(() {
                                                 theIndexField = index;
+                                                searched = true;
                                                 fieldId =
                                                     provider.lawyersCategories[
                                                         index]['id'];

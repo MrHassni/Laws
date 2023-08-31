@@ -8,7 +8,7 @@ class LawyerModel {
   String gender;
   String experience;
   dynamic hourlyRate;
-  String description;
+  dynamic description;
   String fields;
   List fieldsName;
   dynamic website;
@@ -23,8 +23,8 @@ class LawyerModel {
   String endTime;
   String location;
   dynamic area;
-  String lat;
-  String lng;
+  dynamic lat;
+  dynamic lng;
   dynamic streetNumber;
   dynamic route;
   dynamic locality;

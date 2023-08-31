@@ -42,7 +42,9 @@ class _LawyersCategoriesListScreenState extends State<LawyersCategoriesListScree
                           },
                           child: Icon(Icons.arrow_back_ios_new, size: 25,color: Colors.brown.shade500,)),
                       const SizedBox(width: 10,),
-                      Text('Select Required Attorney\'s Field', style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold, color: Colors.brown.shade500),)
+                      SizedBox(
+                          width: MediaQuery.of(context).size.width * 0.8,
+                          child: Text('Select Required Attorney\'s Field', style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold, color: Colors.brown.shade500),))
                     ],
                   ),
                   ListView.builder(
