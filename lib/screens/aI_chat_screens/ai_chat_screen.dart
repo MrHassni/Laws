@@ -224,7 +224,7 @@ class _AIChatScreenState extends State<AIChatScreen> {
                     Align(
                       alignment: Alignment.bottomCenter,
                       child: Container(
-                        padding: const EdgeInsets.only(bottom: 50, top: 10),
+                        padding:  EdgeInsets.only(bottom: MediaQuery.of(context).size.height * 0.075, top: 10),
                         color: Theme.of(context).scaffoldBackgroundColor,
                         child: Row(
                           children: [

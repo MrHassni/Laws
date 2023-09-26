@@ -41,10 +41,10 @@ class _MoreScreenState extends State<MoreScreen> {
                 color: Colors.brown.shade500,
               ),
             ),
-            const MoreScreenButton(
-              text: "SUBSCRIPTION",
-              iconData: CupertinoIcons.creditcard_fill,
-            ),
+            // const MoreScreenButton(
+            //   text: "SUBSCRIPTION",
+            //   iconData: CupertinoIcons.creditcard_fill,
+            // ),
             InkWell(
               onTap: (){
                 Navigator.push(context, MaterialPageRoute(builder: (context) => const ProfileScreen()));

@@ -199,7 +199,7 @@ class _StartScreenState extends State<StartScreen> {
                           padding: const EdgeInsets.symmetric(
                               horizontal: 25, vertical: 15),
                           scrollDirection: Axis.horizontal,
-                          itemCount: contentList.length,
+                          itemCount: 1,
                           separatorBuilder: (BuildContext context, int index) =>
                               const SizedBox(
                             width: 20,
@@ -225,7 +225,7 @@ class _StartScreenState extends State<StartScreen> {
                                   margin: EdgeInsets.zero,
                                   child: Container(
                                     width:
-                                        MediaQuery.of(context).size.width * 0.65,
+                                        MediaQuery.of(context).size.width * 0.85,
                                     padding: const EdgeInsets.all(15),
                                     child: Column(
                                       mainAxisAlignment:

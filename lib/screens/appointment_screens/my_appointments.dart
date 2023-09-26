@@ -92,7 +92,7 @@ class MyAppointments extends StatelessWidget {
                                 Row(
                                   children: [
                                     Container(
-                                      padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 15),
+                                      padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 10),
                                       decoration:  BoxDecoration(
                                         color: Colors.white,
                                         borderRadius: BorderRadius.circular(50)

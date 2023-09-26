@@ -185,7 +185,7 @@ class _LawyerDetailsScreenState extends State<LawyerDetailsScreen> {
               Container(
                 padding: const EdgeInsets.symmetric(horizontal: 25,vertical: 5),
                 child:  Text(
-                    widget.theLawyer.description,  textAlign: TextAlign.left,
+                    widget.theLawyer.description.toString(),  textAlign: TextAlign.left,
                     style: const TextStyle(
                         fontWeight: FontWeight.bold,
                         color: Colors.black,

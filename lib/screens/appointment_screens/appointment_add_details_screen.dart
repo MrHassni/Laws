@@ -32,8 +32,9 @@ class AppointmentAddDetailsScreenState
       minTime: DateTime.now(),
       maxTime: DateTime(DateTime.now().year + 1),
       onConfirm: (date) {
+        log('message');
         Provider.of<LawyerProvider>(context, listen: false).getLawyerTimeSlots(
-            date: _formatDateForFunction(date), lawyerId: widget.theLawyer.id);
+            date: _formatDateForFunction(date), lawyerId: widget.theLawyer.id, context: context);
         setState(() {
           _selectedDate = date;
         });

@@ -85,16 +85,8 @@ class _LawyersListScreenState extends State<LawyersListScreen> {
                                           MainAxisAlignment.spaceBetween,
                                       children: [
                                         Container(
-                                          width: MediaQuery.of(context)
-                                              .size
-                                              .width *
-                                              0.2 -
-                                              20,
-                                          height: MediaQuery.of(context)
-                                              .size
-                                              .width *
-                                              0.2 -
-                                              30,
+                                          width: 50,
+                                          height: 50,
                                           decoration: BoxDecoration(
                                             color: kAppBrown,
                                             shape: BoxShape.circle,
@@ -110,9 +102,8 @@ class _LawyersListScreenState extends State<LawyersListScreen> {
                                         SizedBox(
                                           width: MediaQuery.of(context)
                                                       .size
-                                                      .width *
-                                                  0.8 -
-                                              40,
+                                                      .width -
+                                              130,
                                           child: RichText(
                                             textAlign: TextAlign.start,
                                             maxLines: 4,

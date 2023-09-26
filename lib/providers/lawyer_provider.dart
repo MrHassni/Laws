@@ -239,6 +239,7 @@ class LawyerProvider with ChangeNotifier {
     if (response.statusCode == 200) {
       List<AppointmentModel> appointments = [];
       final jsonData = json.decode(response.body);
+
       for (int i = 0; i < jsonData['content'].length; i++) {
         appointments.add(AppointmentModel.fromJson(jsonData['content'][i]));
       }
@@ -249,7 +250,7 @@ class LawyerProvider with ChangeNotifier {
     notifyListeners();
   }
 
-  getLawyerTimeSlots({required String date, required int lawyerId}) async {
+  getLawyerTimeSlots({required String date, required int lawyerId, required BuildContext context}) async {
     Uri url =
         Uri.parse('${apiURL}check_slots?app_date=$date&lawyer_id=$lawyerId');
     var response = await http.get(
@@ -258,7 +259,9 @@ class LawyerProvider with ChangeNotifier {
     if (response.statusCode == 200) {
       List<AppointmentSlotModel> allLaws = [];
       var allData = jsonDecode(response.body);
-      log(allData.toString());
+      if(allData['content'].isEmpty){
+        errorSnackBar(context: context, message: 'This lawyer is not available for the day you choose.');
+      }
       for (int i = 0; i < allData['content'].length; i++) {
         allLaws.add(AppointmentSlotModel.fromJson(allData['content'][i]));
       }
