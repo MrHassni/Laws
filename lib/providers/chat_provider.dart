@@ -17,7 +17,7 @@ class ChatProvider with ChangeNotifier {
   }
 
   Future<void> chatQuestions(String message) async {
-    Uri url = Uri.parse('${apiURL}openai_chatbot?question=$message');
+    Uri url = Uri.parse('https://immig-assist.co.uk/api/openai_chatbot?question=$message');
     var response = await http.get(
       url,
     );

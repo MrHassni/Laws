@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:laws/screens/auth_screens/login_screen.dart';
 import 'package:laws/screens/widgets/custom_text_field.dart';
@@ -14,6 +16,7 @@ class RegisterScreen extends StatefulWidget {
 }
 
 class _RegisterScreenState extends State<RegisterScreen> {
+  bool loading = false;
 
   TextEditingController fNameController = TextEditingController();
   TextEditingController lNameController = TextEditingController();
@@ -60,51 +63,51 @@ class _RegisterScreenState extends State<RegisterScreen> {
               const SizedBox(
                 height: 25,
               ),
-               CustomTextField(
+              CustomTextField(
                 hint: 'First Name',
                 textEditingController: fNameController,
               ),
               const SizedBox(
                 height: 15,
               ),
-               CustomTextField(
+              CustomTextField(
                 hint: 'Last Name',
                 textEditingController: lNameController,
               ),
               const SizedBox(
                 height: 15,
               ),
-               CustomTextField(
+              CustomTextField(
                 hint: 'Email',
-                 textEditingController: emailController,
+                textEditingController: emailController,
               ),
               const SizedBox(
                 height: 15,
               ),
-               CustomTextField(
+              CustomTextField(
                 hint: 'Password',
                 textEditingController: passwordController,
               ),
               const SizedBox(
                 height: 15,
               ),
-               CustomTextField(
+              CustomTextField(
                 hint: 'Confirm Password',
                 textEditingController: reEnterPasswordController,
               ),
               const SizedBox(
                 height: 15,
               ),
-               CustomTextField(
+              CustomTextField(
                 hint: 'Phone No.#',
-                 textEditingController: phoneNoController,
+                textEditingController: phoneNoController,
               ),
               const SizedBox(
                 height: 15,
               ),
-               CustomTextField(
+              CustomTextField(
                 hint: 'Address',
-                 textEditingController: addressController,
+                textEditingController: addressController,
               ),
               const SizedBox(
                 height: 25,
@@ -112,20 +115,29 @@ class _RegisterScreenState extends State<RegisterScreen> {
               SizedBox(
                 width: MediaQuery.of(context).size.width * 0.85,
                 child: InkWell(
-                  onTap: (){
+                  onTap: () {
                     if (passwordController.text.isNotEmpty &&
                         emailController.text.trim().isNotEmpty &&
                         lNameController.text.trim().isNotEmpty &&
                         fNameController.text.trim().isNotEmpty &&
                         phoneNoController.text.trim().isNotEmpty &&
                         addressController.text.trim().isNotEmpty) {
-
-                      if(passwordController.text == reEnterPasswordController.text){
-                        Provider.of<AuthProvider>(context, listen: false).register(
-                            password: passwordController.text,
-                            email: emailController.text,
-                            context: context, fName: fNameController.text, lName: lNameController.text, phoneNo: phoneNoController.text, address: addressController.text);
-                      }else {
+                      if (passwordController.text ==
+                          reEnterPasswordController.text) {
+                        setState(() {
+                          loading = true;
+                        });
+                        log(loading.toString());
+                        Provider.of<AuthProvider>(context, listen: false)
+                            .register(
+                                password: passwordController.text,
+                                email: emailController.text,
+                                context: context,
+                                fName: fNameController.text,
+                                lName: lNameController.text,
+                                phoneNo: phoneNoController.text,
+                                address: addressController.text);
+                      } else {
                         errorSnackBar(
                             context: context,
                             message: 'Password dosen\'t match.');
@@ -135,6 +147,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           context: context,
                           message: 'Fill all the fields properly.');
                     }
+                    setState(() {
+                      loading = false;
+                    });
                   },
                   child: Card(
                     margin: EdgeInsets.zero,
@@ -145,8 +160,17 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     child: Container(
                         padding: const EdgeInsets.symmetric(
                             horizontal: 25, vertical: 15),
-                        child: const Center(
-                          child: Text('SignUp',
+                        child:  Center(
+                          child:
+                          loading == true ?
+                          const SizedBox(
+                            height: 25,
+                            width: 25,
+                            child: CircularProgressIndicator(
+                              color: Colors.black,
+                            ),
+                          )
+                              : const Text('Sign Up',
                               style: TextStyle(
                                   fontSize: 18, fontWeight: FontWeight.bold)),
                         )),

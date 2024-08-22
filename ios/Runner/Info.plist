@@ -28,6 +28,33 @@
 	<array>
 		<string>To contact lawyers for meetings and to discuss other things.</string>
 	</array>
+	<key>NSPrivacyAccessedAPIUsage</key>
+    <array>
+        <dict>
+            <key>NSPrivacyType</key>
+            <string>NSPrivacyAccessedAPICategoryFileTimestamp</string>
+            <key>NSPrivacyUsageDescription</key>
+            <string>We need access to file timestamps to track changes in documents.</string>
+        </dict>
+        <dict>
+            <key>NSPrivacyType</key>
+            <string>NSPrivacyAccessedAPICategoryUserDefaults</string>
+            <key>NSPrivacyUsageDescription</key>
+            <string>We use UserDefaults to store user preferences and settings.</string>
+        </dict>
+        <dict>
+            <key>NSPrivacyType</key>
+            <string>NSPrivacyAccessedAPICategoryDiskSpace</string>
+            <key>NSPrivacyUsageDescription</key>
+            <string>We require access to disk space information for optimizing storage.</string>
+        </dict>
+        <dict>
+            <key>NSPrivacyType</key>
+            <string>NSPrivacyAccessedAPICategorySystemBootTime</string>
+            <key>NSPrivacyUsageDescription</key>
+            <string>We need to know the system boot time for optimizing app performance.</string>
+        </dict>
+    </array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSLocationAlwaysUsageDescription</key>

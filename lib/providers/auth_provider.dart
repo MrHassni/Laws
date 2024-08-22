@@ -76,18 +76,26 @@ class AuthProvider with ChangeNotifier {
     notifyListeners();
   }
 
-  getLawyerProfile({required String id}) async {
-    Uri url = Uri.parse('${apiURL}lawyer_profile?id=$id');
-    var response = await http.get(
-      url,
-    );
-    if (response.statusCode == 200) {
-      var allData = jsonDecode(response.body);
-      log(allData.toString());
-      LawyerModel.fromJson(allData['content']);
-    } else {
-      throw Exception('Failed to load data');
+  getLawyerProfile({required String id, required BuildContext context}) async {
+
+    try{
+
+      Uri url = Uri.parse('${apiURL}lawyer_profile?id=$id');
+      var response = await http.get(
+        url,
+      );
+      if (response.statusCode == 200) {
+        var allData = jsonDecode(response.body);
+        log(allData.toString());
+        LawyerModel.fromJson(allData['content']);
+      } else {
+        errorSnackBar(context: context, message: '${response.body}  ${response.statusCode.toString()}>');
+        throw Exception('Failed to load data');
+      }
+    }catch(e){
+      errorSnackBar(context: context, message: e.toString());
     }
+
     notifyListeners();
   }
 
