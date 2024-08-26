@@ -8,6 +8,7 @@ import 'package:laws/screens/bottom_nav_screens/bottom_nav_screen.dart';
 import 'package:provider/provider.dart';
 
 import '../../providers/chat_provider.dart';
+import '../../providers/lawyer_provider.dart';
 import '../splash_screens/splash_screen.dart';
 
 class AppointmentScreen extends StatefulWidget {
@@ -150,6 +151,10 @@ class _AppointmentScreenState extends State<AppointmentScreen> {
                 ),
                 InkWell(
                   onTap: (){
+                    Provider.of<LawyerProvider>(context, listen: false).getAllAppointments();
+                    Provider.of<LawyerProvider>(context, listen: false).getPastAppointments();
+                    Provider.of<LawyerProvider>(context, listen: false)
+                        .getUpComingAppointments();
                     Navigator.push(context, MaterialPageRoute(builder: (context) => const MyAppointments()));
                   },
                   child: Container(

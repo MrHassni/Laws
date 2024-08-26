@@ -2,10 +2,12 @@ import 'dart:convert';
 import 'dart:developer';
 
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:laws/constants/shared_prefs.dart';
 import 'package:laws/models/appointment_slot_model.dart';
 import 'package:laws/models/appointments_model.dart';
+import 'package:laws/screens/appointment_screens/web_view_screen.dart';
 
 import '../constants/constants.dart';
 import '../models/lawyer_model.dart';
@@ -177,14 +179,19 @@ class LawyerProvider with ChangeNotifier {
       'end_time': endTime,
       'app_detail': reason
     });
-    log(response.body.toString());
+
     if (response.statusCode == 200) {
       var allData = jsonDecode(response.body);
-
+      log(allData.toString());
       getUpComingAppointments();
       getPastAppointments();
-      Navigator.pop(context);
-      nonErrorSnackBar(context: context, message: 'Appointment created successfully');
+      // print('${allData['content']['id'].toString()+'/'+allData['content']['customer_id'].toString()}/'+allData['content']['lawyer_id'].toString());
+      Navigator.push(context, MaterialPageRoute(builder: (context) => WebViewScreen(
+          appointmentId: allData['content']['id'].toString(),
+          userId: allData['content']['customer_id'].toString(),
+          lawyerId: allData['content']['lawyer_id'].toString())));
+      // Navigator.pop(context);
+      // nonErrorSnackBar(context: context, message: 'Appointment created successfully');
 
     } else {
       throw Exception('Failed to load data');

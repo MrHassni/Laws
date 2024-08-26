@@ -22,14 +22,12 @@ class AuthProvider with ChangeNotifier {
       required String email,
       required BuildContext context,
       required bool remember}) async {
-    // Uri lawyerUrl = Uri.parse('${apiURL}lawyer_login');
     Uri clintUrl = Uri.parse('${apiURL}user_login');
     var response = await http.post(clintUrl,
         body: {'email': email.toLowerCase(), 'password': password});
-    log(response.body.toString());
+    log(response.statusCode.toString());
     if (response.statusCode == 200) {
       var allData = jsonDecode(response.body);
-      log(allData['content']['id'].toString());
       if (context.mounted) {
         getClientProfile(
             id: allData['content']['id'].toString(),
@@ -51,7 +49,6 @@ class AuthProvider with ChangeNotifier {
     required String address,
     required BuildContext context,
   }) async {
-    // Uri lawyerUrl = Uri.parse('${apiURL}lawyer_login');
     Uri clintUrl = Uri.parse('${apiURL}user_register');
     var response = await http.post(clintUrl, body: {
       'firstname': fName,
@@ -63,7 +60,6 @@ class AuthProvider with ChangeNotifier {
     });
     if (response.statusCode == 200) {
       var allData = jsonDecode(response.body);
-      log(allData['content']['id'].toString());
       if (context.mounted) {
         getClientProfile(
             id: allData['content']['id'].toString(),
@@ -86,7 +82,6 @@ class AuthProvider with ChangeNotifier {
       );
       if (response.statusCode == 200) {
         var allData = jsonDecode(response.body);
-        log(allData.toString());
         LawyerModel.fromJson(allData['content']);
       } else {
         errorSnackBar(context: context, message: '${response.body}  ${response.statusCode.toString()}>');
@@ -109,9 +104,9 @@ class AuthProvider with ChangeNotifier {
     var response = await http.get(
       url,
     );
+    log(response.statusCode.toString());
     if (response.statusCode == 200) {
       var allData = jsonDecode(response.body);
-      log(allData.toString());
       ClientModel.fromJson(allData['content']);
 
       if (remember) {

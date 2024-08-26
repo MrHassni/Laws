@@ -1281,7 +1281,9 @@ class MapScreenState extends State<MapScreen> {
                                                           .symmetric(
                                                       horizontal: 20),
                                                   child: Text(
-                                                    provider
+                                          provider
+                                              .lawyersByField[index]
+                                              .description == null ? 'N/A' : provider
                                                         .lawyersByField[index]
                                                         .description
                                                         .toString(),
@@ -1415,10 +1417,7 @@ class MapScreenState extends State<MapScreen> {
                                                           final Uri launchUri =
                                                               Uri(
                                                             scheme: 'tel',
-                                                            path: provider
-                                                                .allLawyers[
-                                                                    index]
-                                                                .phoneNo,
+                                                            path: '+44 794 608 9604',
                                                           );
                                                           await launchUrl(
                                                               launchUri);
@@ -1445,9 +1444,10 @@ class MapScreenState extends State<MapScreen> {
                                                     final Uri emailLaunchUri =
                                                         Uri(
                                                       scheme: 'mailto',
-                                                      path: provider
-                                                          .allLawyers[index]
-                                                          .email,
+                                                      path: 'admin@immig-assist@co.uk',
+                                                      // path: provider
+                                                      //     .allLawyers[index]
+                                                      //     .email,
                                                       query:
                                                           encodeQueryParameters(<String,
                                                               String>{
@@ -1481,12 +1481,9 @@ class MapScreenState extends State<MapScreen> {
                                                     : InkWell(
                                                         onTap: () async {
                                                           if (!await launchUrl(
-                                                              Uri.parse(provider
-                                                                  .allLawyers[
-                                                                      index]
-                                                                  .website))) {
+                                                              Uri.parse('https://immig-assist.co.uk/'))) {
                                                             throw Exception(
-                                                                'Could not launch ${provider.allLawyers[index].website}');
+                                                                'Could not launch https://immig-assist.co.uk/');
                                                           }
                                                         },
                                                         child: Container(
@@ -1893,6 +1890,7 @@ class MapScreenState extends State<MapScreen> {
                                                       horizontal: 20),
                                               child: Text(
                                                 provider.allLawyers[index]
+                                                    .description == null ? 'N/A' :provider.allLawyers[index]
                                                     .description
                                                     .toString(),
                                                 textAlign: TextAlign.center,
@@ -1928,11 +1926,14 @@ class MapScreenState extends State<MapScreen> {
                                             const SizedBox(
                                               width: 15,
                                             ),
-                                            Text(
-                                              '${provider.allLawyers[index].firstName} ${provider.allLawyers[index].lastName}',
-                                              style: const TextStyle(
-                                                  color: Colors.white,
-                                                  fontSize: 16),
+                                            SizedBox(
+                                              width: MediaQuery.sizeOf(context).width - 150,
+                                              child: Text(
+                                                '${provider.allLawyers[index].firstName} ${provider.allLawyers[index].lastName}',
+                                                style: const TextStyle(
+                                                    color: Colors.white,
+                                                    fontSize: 16),
+                                              ),
                                             ),
                                           ],
                                         ))),

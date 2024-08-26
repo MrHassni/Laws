@@ -85,7 +85,7 @@ class _LawyersTypesScreenState extends State<LawyersTypesScreen> {
                                           fontSize: 30),
                                     ),
                                     Text(
-                                      '${provider.lawyersTypes[index]['tooltip']}',
+                                      provider.lawyersTypes[index]['tooltip'] == null ? '' : '${provider.lawyersTypes[index]['tooltip']}',
                                       textAlign: TextAlign.center,
                                       style: const TextStyle(
                                           color: Colors.white,

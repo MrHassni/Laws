@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_datetime_picker_plus/flutter_datetime_picker_plus.dart';
 import 'package:intl/intl.dart';
 import 'package:laws/providers/lawyer_provider.dart';
+import 'package:laws/screens/appointment_screens/web_view_screen.dart';
 import 'package:provider/provider.dart';
 
 import '../../constants/constants.dart';
@@ -24,17 +25,34 @@ class AppointmentAddDetailsScreenState
   TextEditingController textEditingController = TextEditingController();
 
   DateTime _selectedDate = DateTime.now();
+  bool loading = false;
+  bool slotLoading = false;
 
   void _pickDate() {
+    FocusScope.of(context).unfocus();
     DatePicker.showDatePicker(
       context,
       showTitleActions: true,
       minTime: DateTime.now(),
       maxTime: DateTime(DateTime.now().year + 1),
       onConfirm: (date) {
-        log('message');
+        setState(() {
+          slotLoading = true;
+        });
+        Future.delayed(const Duration(seconds: 20), () {
+          if (slotLoading == true) {
+            setState(() {
+              slotLoading = false;
+            });
+          }
+        });
+
         Provider.of<LawyerProvider>(context, listen: false).getLawyerTimeSlots(
-            date: _formatDateForFunction(date), lawyerId: widget.theLawyer.id, context: context);
+            date: _formatDateForFunction(date), lawyerId: widget.theLawyer.id, context: context).then((_){
+              setState(() {
+                slotLoading = false;
+              });
+        });
         setState(() {
           _selectedDate = date;
         });
@@ -97,10 +115,14 @@ class AppointmentAddDetailsScreenState
                 child: TextField(
                   maxLines: 4,
                   controller: textEditingController,
+                  onEditingComplete: () {
+                    FocusScope.of(context).unfocus(); // Hide the keyboard
+                  },
                   decoration: InputDecoration(
                     filled: true,
                     hintText: 'Describe the reason of appointment...',
                     fillColor: Colors.grey.shade500,
+
                     enabledBorder: OutlineInputBorder(
                       borderSide:
                           const BorderSide(width: 0, color: Colors.transparent),
@@ -150,12 +172,15 @@ class AppointmentAddDetailsScreenState
               const SizedBox(
                 height: 15,
               ),
-              GridView.builder(
+             slotLoading ?
+                 CircularProgressIndicator(color: kAppBrown,)
+                 : GridView.builder(
+                physics: const NeverScrollableScrollPhysics(),
                   gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                       crossAxisCount: 4,
                       crossAxisSpacing: 4.0,
                       mainAxisSpacing: 4.0,
-                    childAspectRatio: 2/1.25
+                    childAspectRatio: 1.5/1.25
                   ),
                   shrinkWrap: true,
                   itemCount: provider.allSlots.length,
@@ -192,10 +217,44 @@ class AppointmentAddDetailsScreenState
               const SizedBox(
                 height: 30,
               ),
-              InkWell(
+             loading ? SizedBox(
+               width: MediaQuery.of(context).size.width - 50,
+               child: Card(
+                 margin: EdgeInsets.zero,
+                 elevation: 5,
+                 color: kAppBrown,
+                 shape: RoundedRectangleBorder(
+                   borderRadius: BorderRadius.circular(10),
+
+                 ),
+                 child: Container(
+                   width: 55,
+                   height: 55,
+
+                   padding:  const EdgeInsets.symmetric(
+                       vertical: 10, horizontal: 10),
+                   // decoration: BoxDecoration(
+                   //     color: kAppBrown,
+                   //     borderRadius: BorderRadius.circular(10)),
+                   child:  const FittedBox(child: CircularProgressIndicator(color: Colors.white,)),
+                 ),
+               ),
+             )
+                 : InkWell(
                 borderRadius: BorderRadius.circular(10),
                 onTap: () {
                   if(startTime != '' && endTime != '') {
+                    setState(() {
+                      loading = true;
+                    });
+                    Future.delayed(const Duration(seconds: 20), () {
+                      if (loading == true) {
+                        setState(() {
+                          loading = false;
+                        });
+                      }
+                    });
+
 
                     Provider.of<LawyerProvider>(context, listen: false)
                       .createAppointment(
@@ -204,7 +263,11 @@ class AppointmentAddDetailsScreenState
                           endTime: endTime,
                           reason: textEditingController.text,
                           theLawyer: widget.theLawyer,
-                          context: context);
+                          context: context).then((_){
+                            setState(() {
+                              loading = false;
+                            });
+                    });
                   }else{
                     errorSnackBar(context: context, message: 'Please, select any time slot');
                   }
@@ -234,6 +297,9 @@ class AppointmentAddDetailsScreenState
                     ),
                   ),
                 ),
+              ),
+              const SizedBox(
+                height: 80,
               ),
             ],
           ),

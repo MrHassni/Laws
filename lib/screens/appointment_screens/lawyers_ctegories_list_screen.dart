@@ -86,13 +86,16 @@ class _LawyersCategoriesListScreenState extends State<LawyersCategoriesListScree
                                     const SizedBox(
                                       width: 15,
                                     ),
-                                    Text(
-                                        provider.lawyersCategories[index]['name'],
-                                        style: const TextStyle(
-                                            color: Colors.black,
-                                            fontWeight: FontWeight.bold,
-                                            fontSize: 18),
-                                      ),
+                                    SizedBox(
+                                      width: MediaQuery.sizeOf(context).width -125,
+                                      child: Text(
+                                          provider.lawyersCategories[index]['name'],
+                                          style: const TextStyle(
+                                              color: Colors.black,
+                                              fontWeight: FontWeight.bold,
+                                              fontSize: 18),
+                                        ),
+                                    ),
                                     const SizedBox(
                                       width: 15,
                                     ),

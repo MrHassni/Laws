@@ -78,13 +78,15 @@ class _LawyerDetailsScreenState extends State<LawyerDetailsScreen> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
-                  widget.theLawyer.phoneNo == null
-                      ? const SizedBox()
-                      : InkWell(
+                  // widget.theLawyer.phoneNo == null
+                  //     ? const SizedBox()
+                  //     :
+                  InkWell(
                           onTap: () async {
                             final Uri launchUri = Uri(
                               scheme: 'tel',
-                              path: widget.theLawyer.phoneNo,
+                              path: '+44 794 608 9604',
+                              // path: widget.theLawyer.phoneNo,
                             );
                             await launchUrl(launchUri);
                           },
@@ -103,7 +105,8 @@ class _LawyerDetailsScreenState extends State<LawyerDetailsScreen> {
                     onTap: () {
                       final Uri emailLaunchUri = Uri(
                         scheme: 'mailto',
-                        path: widget.theLawyer.email,
+                        // path: widget.theLawyer.email,
+                        path: 'admin@immig-assist@co.uk',
                         query: encodeQueryParameters(<String, String>{
                           'subject': 'Hello!\n\nI need help with',
                         }),
@@ -122,14 +125,15 @@ class _LawyerDetailsScreenState extends State<LawyerDetailsScreen> {
                       ),
                     ),
                   ),
-                  widget.theLawyer.website == null
-                      ? const SizedBox()
-                      : InkWell(
+                  // widget.theLawyer.website == null
+                  //     ? const SizedBox()
+                  //     :
+                  InkWell(
                           onTap: () async {
                             if (!await launchUrl(
-                                Uri.parse(widget.theLawyer.website))) {
+                                Uri.parse('https://immig-assist.co.uk/'))) {
                               throw Exception(
-                                  'Could not launch ${widget.theLawyer.website}');
+                                  'Could not launch ${'https://immig-assist.co.uk/'}');
                             }
                           },
                           child: Container(
@@ -185,7 +189,7 @@ class _LawyerDetailsScreenState extends State<LawyerDetailsScreen> {
               Container(
                 padding: const EdgeInsets.symmetric(horizontal: 25,vertical: 5),
                 child:  Text(
-                    widget.theLawyer.description.toString(),  textAlign: TextAlign.left,
+                    widget.theLawyer.description == null ? 'N/A' : widget.theLawyer.description.toString(),  textAlign: TextAlign.left,
                     style: const TextStyle(
                         fontWeight: FontWeight.bold,
                         color: Colors.black,

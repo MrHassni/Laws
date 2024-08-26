@@ -20,7 +20,7 @@ class LawyerModel {
   dynamic qualification;
   dynamic membership;
   dynamic startTime;
-  String endTime;
+  String? endTime;
   String location;
   dynamic area;
   dynamic lat;

@@ -72,29 +72,29 @@ class _StartScreenState extends State<StartScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: kAppBrown,
-      body: SingleChildScrollView(
-        child: SizedBox(
-          height: MediaQuery.of(context).size.height,
-          child: Column(
-            children: [
-              const SizedBox(
-                height: 35,
+      body: SizedBox(
+        height: MediaQuery.of(context).size.height,
+        child: Column(
+          children: [
+            const SizedBox(
+              height: 35,
+            ),
+            Container(
+              margin: const EdgeInsets.symmetric(vertical: 35),
+              child: Image.asset(
+                'images/white_logo.png',
+                width: MediaQuery.of(context).size.width * 0.4,
+                color: Colors.white,
               ),
-              Container(
-                margin: const EdgeInsets.symmetric(vertical: 35),
-                child: Image.asset(
-                  'images/white_logo.png',
-                  width: MediaQuery.of(context).size.width * 0.4,
-                  color: Colors.white,
-                ),
-              ),
-              Expanded(
-                child: Container(
-                  decoration: const BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.only(
-                          topLeft: Radius.circular(25),
-                          topRight: Radius.circular(25))),
+            ),
+            Expanded(
+              child: Container(
+                decoration: const BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(25),
+                        topRight: Radius.circular(25))),
+                child: SingleChildScrollView(
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.center,
@@ -350,8 +350,8 @@ class _StartScreenState extends State<StartScreen> {
                   ),
                 ),
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );

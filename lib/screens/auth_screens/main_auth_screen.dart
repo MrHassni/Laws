@@ -41,7 +41,7 @@ class MainAuthScreen extends StatelessWidget {
                   color: Colors.grey.shade400.withOpacity(0.2),
                   child: Container(padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 15),
                   child: const Center(
-                    child: Text('Sign In', style: TextStyle(
+                    child: Text('SignIn', style: TextStyle(
                       fontSize: 18,
                       fontWeight: FontWeight.bold
                     )),
