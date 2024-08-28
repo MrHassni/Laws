@@ -116,7 +116,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 Container(
                   alignment: Alignment.center,
                   width: MediaQuery.of(context).size.width * 0.85,
-                  child: Text('SignUp Now',
+                  child: Text('Sign up Now',
                       textAlign: TextAlign.left,
                       style: TextStyle(
                           fontWeight: FontWeight.bold,
@@ -190,11 +190,14 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   width: MediaQuery.of(context).size.width * 0.85,
                   child: InkWell(
                     onTap: () {
+                      FocusScope.of(context).unfocus();
                       if (_formKey.currentState?.validate() ?? false) {
+
+
                         setState(() {
                           loading = true;
                         });
-                        Future.delayed(const Duration(seconds: 20), () {
+                        Future.delayed(const Duration(seconds: 13), () {
                           if (loading == true) {
                             setState(() {
                               loading = false;
@@ -239,7 +242,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                 color: Colors.black,
                               ),
                             )
-                                : const Text('SignUp',
+                                : const Text('Sign up',
                                 style: TextStyle(
                                     fontSize: 18,
                                     fontWeight: FontWeight.bold)),
@@ -269,7 +272,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         ),
                         children: <TextSpan>[
                           TextSpan(
-                              text: 'SignIn',
+                              text: 'Sign in',
                               style: TextStyle(
                                   fontWeight: FontWeight.bold,
                                   color: kAppBrown,

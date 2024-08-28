@@ -39,7 +39,7 @@ class AppointmentAddDetailsScreenState
         setState(() {
           slotLoading = true;
         });
-        Future.delayed(const Duration(seconds: 20), () {
+        Future.delayed(const Duration(seconds: 13), () {
           if (slotLoading == true) {
             setState(() {
               slotLoading = false;
@@ -247,7 +247,7 @@ class AppointmentAddDetailsScreenState
                     setState(() {
                       loading = true;
                     });
-                    Future.delayed(const Duration(seconds: 20), () {
+                    Future.delayed(const Duration(seconds: 13), () {
                       if (loading == true) {
                         setState(() {
                           loading = false;

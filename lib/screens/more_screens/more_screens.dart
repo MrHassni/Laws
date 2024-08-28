@@ -58,6 +58,20 @@ class _MoreScreenState extends State<MoreScreen> {
               borderRadius: BorderRadius.circular(10),
               onTap: () async {
                 Uri url =
+                Uri.parse('https://immig-assist.co.uk/disclaimer');
+                if (!await launchUrl(url)) {
+                  throw Exception('Could not launch $url');
+                }
+              },
+              child: const MoreScreenButton(
+                text: "Disclaimer",
+                iconData: Icons.privacy_tip,
+              ),
+            ),
+            InkWell(
+              borderRadius: BorderRadius.circular(10),
+              onTap: () async {
+                Uri url =
                     Uri.parse('http://test.immig-assist.co.uk/privacy-policy');
                 if (!await launchUrl(url)) {
                   throw Exception('Could not launch $url');
@@ -66,20 +80,6 @@ class _MoreScreenState extends State<MoreScreen> {
               child: const MoreScreenButton(
                 text: "PRIVACY POLICY",
                 iconData: Icons.privacy_tip,
-              ),
-            ),
-            InkWell(
-              borderRadius: BorderRadius.circular(10),
-              onTap: () async {
-                Uri url =
-                    Uri.parse('http://test.immig-assist.co.uk/what-we-do');
-                if (!await launchUrl(url)) {
-                  throw Exception('Could not launch $url');
-                }
-              },
-              child: const MoreScreenButton(
-                text: "DISCLAIMERS",
-                iconData: Icons.info,
               ),
             ),
             InkWell(
@@ -133,8 +133,12 @@ class _MoreScreenState extends State<MoreScreen> {
                           SharedPreferences preferences = await SharedPreferences.getInstance();
                           await preferences.clear();
                           if(context.mounted) {
-                            Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=> const MainAuthScreen()));
-                          }
+                            // Navigator.p
+                            Navigator.pushAndRemoveUntil(
+                              context,
+                              MaterialPageRoute(builder: (context) => const MainAuthScreen()),
+                                  (Route<dynamic> route) => false,
+                            );  }
                         },
                         child: const Text('Yes',style: TextStyle(
                             fontWeight: FontWeight.bold, color: Colors.red
@@ -154,9 +158,9 @@ class _MoreScreenState extends State<MoreScreen> {
                 child: Container(
                   padding:
                       const EdgeInsets.symmetric(vertical: 10, horizontal: 15),
-                  child: Row(
+                  child: const Row(
                     mainAxisAlignment: MainAxisAlignment.center,
-                    children: const [
+                    children: [
                       Icon(
                         Icons.help_center,
                         color: Colors.white,

@@ -166,7 +166,7 @@ class _LogInScreenState extends State<LogInScreen> {
                         setState(() {
                           loading = true;
                         });
-                        Future.delayed(const Duration(seconds: 20), () {
+                        Future.delayed(const Duration(seconds: 13), () {
                           if (loading == true) {
                             setState(() {
                               loading = false;
@@ -200,7 +200,7 @@ class _LogInScreenState extends State<LogInScreen> {
                           padding: const EdgeInsets.symmetric(
                               horizontal: 25, vertical: 15),
                           child: const Center(
-                            child: Text('SignIn',
+                            child: Text('Sign in',
                                 style: TextStyle(
                                     fontSize: 18,
                                     fontWeight: FontWeight.bold)),

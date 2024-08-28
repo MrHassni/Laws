@@ -35,6 +35,8 @@ class AuthProvider with ChangeNotifier {
             remember: true);
       }
     } else {
+      var allData = jsonDecode(response.body);
+      errorSnackBar(context: context, message: allData['content']);
       throw Exception('Failed to load data');
     }
     notifyListeners();
@@ -67,6 +69,8 @@ class AuthProvider with ChangeNotifier {
             remember: true);
       }
     } else {
+      var allData = jsonDecode(response.body);
+      errorSnackBar(context: context, message: allData['content']);
       throw Exception('Failed to load data');
     }
     notifyListeners();
