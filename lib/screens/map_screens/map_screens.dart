@@ -1011,7 +1011,7 @@ class MapScreenState extends State<MapScreen> {
                                                             null
                                                     ? const SizedBox()
                                                     : const Text(
-                                                        'Attorney Info',
+                                                        'Lawyer Info',
                                                         style: TextStyle(
                                                             color: Colors.white,
                                                             fontSize: 16,
@@ -1614,7 +1614,7 @@ class MapScreenState extends State<MapScreen> {
                                                         null
                                                 ? const SizedBox()
                                                 : const Text(
-                                                    'Attorney Info',
+                                                    'Lawyer Info',
                                                     style: TextStyle(
                                                         color: Colors.white,
                                                         fontSize: 16,

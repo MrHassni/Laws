@@ -7,8 +7,9 @@ import '../../constants/constants.dart';
 import '../../providers/lawyer_provider.dart';
 
 class LawyersCategoriesListScreen extends StatefulWidget {
-  const LawyersCategoriesListScreen({Key? key, required this.type}) : super(key: key);
+  const LawyersCategoriesListScreen({super.key, required this.type, required this.typeName});
   final int type;
+  final String typeName;
 
   @override
   State<LawyersCategoriesListScreen> createState() => _LawyersCategoriesListScreenState();
@@ -44,7 +45,7 @@ class _LawyersCategoriesListScreenState extends State<LawyersCategoriesListScree
                       const SizedBox(width: 10,),
                       SizedBox(
                           width: MediaQuery.of(context).size.width * 0.8,
-                          child: Text('Select Required Attorney\'s Field', style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold, color: Colors.brown.shade500),))
+                          child: Text('Select Required ${widget.typeName}\'s Field', style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold, color: Colors.brown.shade500),))
                     ],
                   ),
                   ListView.builder(
@@ -63,11 +64,11 @@ class _LawyersCategoriesListScreenState extends State<LawyersCategoriesListScree
                           });
                           provider.getLawyersByField(fieldId: provider.lawyersCategories[index]['id'], typeId: widget.type, ethnicity: '', location: '', ).then((_){
                             if(provider.lawyersByField.isNotEmpty){
-                              Navigator.push(context, MaterialPageRoute(builder: (context) => const LawyersListScreen()));
+                              Navigator.push(context, MaterialPageRoute(builder: (context) =>  LawyersListScreen(typeName: widget.typeName,)));
                             }else{
                               errorSnackBar(
                                   context: context,
-                                  message: 'No Attorney Available');
+                                  message: 'No Lawyer Available');
                             }
                             loading = false;
                           });

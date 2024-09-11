@@ -77,7 +77,7 @@ class BottomNavScreenState extends State<BottomNavScreen> {
                 ),
                 BottomNavigationBarItem(
                   icon: Icon(Icons.calendar_month),
-                  label: "Book Attorney",
+                  label: "Book Lawyer",
                 ),
                 BottomNavigationBarItem(
                   icon: Icon(Icons.more_horiz),

@@ -9,9 +9,9 @@ import 'appointment_add_details_screen.dart';
 
 class LawyerDetailsScreen extends StatefulWidget {
   final LawyerModel theLawyer;
+  final String typeWidget;
 
-  const LawyerDetailsScreen({Key? key, required this.theLawyer})
-      : super(key: key);
+  const LawyerDetailsScreen({super.key, required this.theLawyer, required this.typeWidget});
 
   @override
   State<LawyerDetailsScreen> createState() => _LawyerDetailsScreenState();
@@ -52,7 +52,7 @@ class _LawyerDetailsScreenState extends State<LawyerDetailsScreen> {
                     width: 10,
                   ),
                   Text(
-                    'Solicitors',
+                    widget.typeWidget,
                     style: TextStyle(
                         fontSize: 25,
                         fontWeight: FontWeight.bold,

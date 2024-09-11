@@ -7,7 +7,8 @@ import '../../constants/constants.dart';
 import '../../providers/lawyer_provider.dart';
 
 class LawyersListScreen extends StatefulWidget {
-  const LawyersListScreen({Key? key}) : super(key: key);
+  final String typeName;
+  const LawyersListScreen({super.key, required this.typeName});
 
   @override
   State<LawyersListScreen> createState() => _LawyersListScreenState();
@@ -48,7 +49,8 @@ class _LawyersListScreenState extends State<LawyersListScreen> {
                             width: 10,
                           ),
                           Text(
-                            'Solicitors',
+                            widget.typeName,
+                            // 'Solicitors',
                             style: TextStyle(
                                 fontSize: 25,
                                 fontWeight: FontWeight.bold,
@@ -70,7 +72,7 @@ class _LawyersListScreenState extends State<LawyersListScreen> {
                                   MaterialPageRoute(
                                       builder: (context) => LawyerDetailsScreen(
                                           theLawyer:
-                                              provider.lawyersByField[index])));
+                                              provider.lawyersByField[index], typeWidget: widget.typeName,)));
                             },
                             child: Card(
                                 elevation: 5,

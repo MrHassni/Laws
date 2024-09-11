@@ -1,4 +1,4 @@
-package com.example.laws
+package com.hassan.laws
 
 import io.flutter.embedding.android.FlutterActivity
 

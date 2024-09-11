@@ -24,15 +24,15 @@ class AppointmentModel {
   final int id;
   final int typeId;
   final int ethnicityId;
-  final int visaTypeId;
+  final dynamic visaTypeId;
   final String firstname;
   final String lastname;
   final String gender;
   final String experience;
   final dynamic hourlyRate;
   final String description;
-  final String fields;
-  final String website;
+  final dynamic fields;
+  final dynamic website;
   final String phoneNo;
   final String email;
   final dynamic password;
@@ -51,10 +51,10 @@ class AppointmentModel {
   final dynamic locality;
   final dynamic administrativeAreaLevel1;
   final dynamic postalCode;
-  final String country;
-  final String ethnicityName;
-  final String lawyersType;
-  final String visaTypeName;
+  final dynamic country;
+  final dynamic ethnicityName;
+  final dynamic lawyersType;
+  final dynamic visaTypeName;
 
   AppointmentModel({
     required this.appId,

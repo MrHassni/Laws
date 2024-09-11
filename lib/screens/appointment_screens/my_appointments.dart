@@ -59,6 +59,7 @@ class MyAppointments extends StatelessWidget {
                 itemCount: appointmentLists.length,
                 itemBuilder: (BuildContext context, int index) {
                   return  InkWell(
+                    splashColor: Colors.transparent,
                     onTap: (){
                     },
                     child: Card(
@@ -72,17 +73,25 @@ class MyAppointments extends StatelessWidget {
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Row(
-                                  children: [
-                                    Text(
-                                      "${appointmentLists[index].firstname} ${appointmentLists[index].lastname}",
-                                      style: const TextStyle(
-                                          color: Colors.black,
-                                          fontWeight: FontWeight.bold,
-                                          fontSize: 16),
-                                    ),
-                                    Text('  (${appointmentLists[index].lawyersType})')
-                                  ],
+                                SizedBox(
+                                  width: MediaQuery.sizeOf(context).width - 100,
+                                  child: Row(
+                                    children: [
+                                      SizedBox(
+                                  width: (MediaQuery.sizeOf(context).width - 100)/2,
+                                        child: Text(
+                                          "${appointmentLists[index].firstname} ${appointmentLists[index].lastname}",
+                                          style: const TextStyle(
+                                              color: Colors.black,
+                                              fontWeight: FontWeight.bold,
+                                              fontSize: 16),
+                                        ),
+                                      ),
+                                      SizedBox(
+                                          width: (MediaQuery.sizeOf(context).width - 100)/2,
+                                          child: Text('  (${appointmentLists[index].lawyersType})'))
+                                    ],
+                                  ),
                                 ),
                                 const SizedBox(height: 10,),
                                 appointmentLists[index].appDetail == null ? const SizedBox() : Container(
@@ -92,7 +101,7 @@ class MyAppointments extends StatelessWidget {
                                 Row(
                                   children: [
                                     Container(
-                                      padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 10),
+                                      padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 5),
                                       decoration:  BoxDecoration(
                                         color: Colors.white,
                                         borderRadius: BorderRadius.circular(50)

@@ -114,7 +114,7 @@ class _StartScreenState extends State<StartScreen> {
                                 fontSize: 20),
                             children: const <TextSpan>[
                               TextSpan(
-                                  text: 'Attorneys',
+                                  text: 'Lawyers',
                                   style: TextStyle(
                                     fontWeight: FontWeight.w800,
                                     decoration: TextDecoration.underline,
@@ -148,7 +148,7 @@ class _StartScreenState extends State<StartScreen> {
                               child: const Column(
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
-                                  Text('Find An Attorney',
+                                  Text('Find A Lawyer',
                                       textAlign: TextAlign.center,
                                       style: TextStyle(
                                           fontWeight: FontWeight.bold,

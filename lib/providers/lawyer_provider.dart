@@ -114,6 +114,7 @@ class LawyerProvider with ChangeNotifier {
       url,
     );
 
+
     if (response.statusCode == 200) {
       List allLaws = [];
       var allData = jsonDecode(response.body);
@@ -186,12 +187,12 @@ class LawyerProvider with ChangeNotifier {
       getUpComingAppointments();
       getPastAppointments();
       // print('${allData['content']['id'].toString()+'/'+allData['content']['customer_id'].toString()}/'+allData['content']['lawyer_id'].toString());
-      Navigator.push(context, MaterialPageRoute(builder: (context) => WebViewScreen(
-          appointmentId: allData['content']['id'].toString(),
-          userId: allData['content']['customer_id'].toString(),
-          lawyerId: allData['content']['lawyer_id'].toString())));
-      // Navigator.pop(context);
-      // nonErrorSnackBar(context: context, message: 'Appointment created successfully');
+      // Navigator.push(context, MaterialPageRoute(builder: (context) => WebViewScreen(
+      //     appointmentId: allData['content']['id'].toString(),
+      //     userId: allData['content']['customer_id'].toString(),
+      //     lawyerId: allData['content']['lawyer_id'].toString())));
+      Navigator.pop(context);
+      nonErrorSnackBar(context: context, message: 'Appointment created successfully');
 
     } else {
       throw Exception('Failed to load data');
@@ -205,6 +206,7 @@ class LawyerProvider with ChangeNotifier {
     var response = await http.get(
       url,
     );
+    log(response.body.toString());
     if (response.statusCode == 200) {
       List<AppointmentModel> appointments = [];
       final jsonData = json.decode(response.body);
