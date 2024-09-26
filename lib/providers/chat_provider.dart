@@ -3,7 +3,6 @@ import 'dart:developer';
 
 import 'package:flutter/cupertino.dart';
 import 'package:http/http.dart' as http;
-import '../constants/constants.dart';
 
 class ChatProvider with ChangeNotifier {
   String reply = '';

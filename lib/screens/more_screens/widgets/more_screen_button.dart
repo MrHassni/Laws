@@ -3,8 +3,7 @@ import 'package:flutter/material.dart';
 class MoreScreenButton extends StatelessWidget {
   final String text;
   final IconData iconData;
-  const MoreScreenButton({Key? key, required this.iconData, required this.text})
-      : super(key: key);
+  const MoreScreenButton({super.key, required this.iconData, required this.text});
 
   @override
   Widget build(BuildContext context) {

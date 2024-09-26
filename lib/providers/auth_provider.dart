@@ -8,11 +8,9 @@ import 'package:http/http.dart' as http;
 import 'package:laws/constants/constants.dart';
 import 'package:laws/constants/shared_prefs.dart';
 import 'package:laws/screens/bottom_nav_screens/bottom_nav_screen.dart';
-import 'package:laws/screens/start_screen/start_screen.dart';
 
 import '../models/client_profile_model.dart';
 import '../models/lawyer_profile_model.dart';
-import '../screens/map_screens/map_screens.dart';
 
 class AuthProvider with ChangeNotifier {
   ClientModel? currentUser;

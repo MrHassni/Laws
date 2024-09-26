@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:laws/screens/appointment_screens/lawyers_list_screen.dart';
-import 'package:laws/screens/appointment_screens/lawyer_details_screen.dart';
 import 'package:provider/provider.dart';
 
 import '../../constants/constants.dart';

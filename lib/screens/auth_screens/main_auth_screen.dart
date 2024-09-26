@@ -6,7 +6,7 @@ import '../../constants/constants.dart';
 
 class MainAuthScreen extends StatelessWidget {
 
-  const MainAuthScreen({Key? key}) : super(key: key);
+  const MainAuthScreen({super.key});
 
   @override
   Widget build(BuildContext context) {

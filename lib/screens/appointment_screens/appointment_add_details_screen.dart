@@ -1,10 +1,8 @@
-import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_datetime_picker_plus/flutter_datetime_picker_plus.dart';
 import 'package:intl/intl.dart';
 import 'package:laws/providers/lawyer_provider.dart';
-import 'package:laws/screens/appointment_screens/web_view_screen.dart';
 import 'package:provider/provider.dart';
 
 import '../../constants/constants.dart';

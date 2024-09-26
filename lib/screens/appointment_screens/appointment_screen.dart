@@ -1,18 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:laws/constants/constants.dart';
-import 'package:laws/screens/appointment_screens/lawyers_list_screen.dart';
-import 'package:laws/screens/appointment_screens/lawyers_ctegories_list_screen.dart';
 import 'package:laws/screens/appointment_screens/lawyers_types_screen.dart';
 import 'package:laws/screens/appointment_screens/my_appointments.dart';
-import 'package:laws/screens/bottom_nav_screens/bottom_nav_screen.dart';
 import 'package:provider/provider.dart';
 
 import '../../providers/chat_provider.dart';
 import '../../providers/lawyer_provider.dart';
-import '../splash_screens/splash_screen.dart';
 
 class AppointmentScreen extends StatefulWidget {
-  const AppointmentScreen({Key? key}) : super(key: key);
+  const AppointmentScreen({super.key});
 
   @override
   State<AppointmentScreen> createState() => _AppointmentScreenState();

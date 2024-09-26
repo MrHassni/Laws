@@ -7,7 +7,6 @@ import 'package:http/http.dart' as http;
 import 'package:laws/constants/shared_prefs.dart';
 import 'package:laws/models/appointment_slot_model.dart';
 import 'package:laws/models/appointments_model.dart';
-import 'package:laws/screens/appointment_screens/web_view_screen.dart';
 
 import '../constants/constants.dart';
 import '../models/lawyer_model.dart';

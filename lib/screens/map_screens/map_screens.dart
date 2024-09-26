@@ -14,7 +14,7 @@ import 'package:url_launcher/url_launcher.dart';
 import '../../constants/constants.dart';
 
 class MapScreen extends StatefulWidget {
-  const MapScreen({Key? key}) : super(key: key);
+  const MapScreen({super.key});
 
   @override
   State<MapScreen> createState() => MapScreenState();

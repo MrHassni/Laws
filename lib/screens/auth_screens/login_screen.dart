@@ -6,7 +6,7 @@ import 'package:provider/provider.dart';
 import '../../constants/constants.dart';
 
 class LogInScreen extends StatefulWidget {
-  const LogInScreen({Key? key}) : super(key: key);
+  const LogInScreen({super.key});
 
   @override
   State<LogInScreen> createState() => _LogInScreenState();

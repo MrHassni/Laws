@@ -13,7 +13,7 @@ import '../appointment_screens/appointment_screen.dart';
 
 class BottomNavScreen extends StatefulWidget {
   final int? pageNumber;
-   const BottomNavScreen({Key? key, this.pageNumber}) : super(key: key);
+   const BottomNavScreen({super.key, this.pageNumber});
 
   @override
   BottomNavScreenState createState() {

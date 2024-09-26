@@ -1,8 +1,6 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
-import 'package:laws/constants/constants.dart';
 import 'package:laws/models/chat_model.dart';
 import 'package:laws/providers/auth_provider.dart';
 import 'package:provider/provider.dart';
@@ -10,7 +8,7 @@ import 'package:provider/provider.dart';
 import '../../providers/chat_provider.dart';
 
 class AIChatScreen extends StatefulWidget {
-  const AIChatScreen({Key? key}) : super(key: key);
+  const AIChatScreen({super.key});
 
   @override
   State<AIChatScreen> createState() => _AIChatScreenState();

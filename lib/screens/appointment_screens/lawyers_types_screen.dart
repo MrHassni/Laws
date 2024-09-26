@@ -1,14 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:laws/screens/appointment_screens/lawyers_ctegories_list_screen.dart';
-import 'package:laws/screens/appointment_screens/lawyers_list_screen.dart';
-import 'package:laws/screens/appointment_screens/lawyer_details_screen.dart';
 import 'package:provider/provider.dart';
 
-import '../../constants/constants.dart';
 import '../../providers/lawyer_provider.dart';
 
 class LawyersTypesScreen extends StatefulWidget {
-  const LawyersTypesScreen({Key? key}) : super(key: key);
+  const LawyersTypesScreen({super.key});
 
   @override
   State<LawyersTypesScreen> createState() => _LawyersTypesScreenState();

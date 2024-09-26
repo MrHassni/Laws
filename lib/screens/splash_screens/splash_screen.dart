@@ -5,8 +5,6 @@ import 'package:laws/screens/auth_screens/main_auth_screen.dart';
 import 'package:laws/screens/bottom_nav_screens/bottom_nav_screen.dart';
 import 'dart:async';
 
-import 'package:laws/screens/map_screens/map_screens.dart';
-import 'package:laws/screens/start_screen/start_screen.dart';
 import 'package:provider/provider.dart';
 
 class SplashScreen extends StatefulWidget {

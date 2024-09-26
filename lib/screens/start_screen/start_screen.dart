@@ -8,7 +8,7 @@ import '../../constants/constants.dart';
 import '../../providers/lawyer_provider.dart';
 
 class StartScreen extends StatefulWidget {
-  const StartScreen({Key? key}) : super(key: key);
+  const StartScreen({super.key});
 
   @override
   State<StartScreen> createState() => _StartScreenState();

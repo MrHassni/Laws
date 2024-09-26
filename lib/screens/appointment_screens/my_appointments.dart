@@ -6,7 +6,7 @@ import '../../constants/constants.dart';
 import '../../providers/lawyer_provider.dart';
 
 class MyAppointments extends StatelessWidget {
-  const MyAppointments({Key? key}) : super(key: key);
+  const MyAppointments({super.key});
 
   @override
   Widget build(BuildContext context) {

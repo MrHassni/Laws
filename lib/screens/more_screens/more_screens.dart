@@ -7,7 +7,7 @@ import '../auth_screens/main_auth_screen.dart';
 import '../more_screens/widgets/more_screen_button.dart';
 
 class MoreScreen extends StatefulWidget {
-   const MoreScreen({Key? key}) : super(key: key);
+   const MoreScreen({super.key});
 
   @override
   State<MoreScreen> createState() => _MoreScreenState();
@@ -187,9 +187,9 @@ class _MoreScreenState extends State<MoreScreen> {
               child: Container(
                 padding:
                     const EdgeInsets.symmetric(vertical: 10, horizontal: 15),
-                child: Row(
+                child: const Row(
                   mainAxisAlignment: MainAxisAlignment.center,
-                  children: const [
+                  children: [
                     Icon(
                       Icons.delete_forever,
                       color: Colors.white,
